@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tidyspace for Confluence</title>
+  <meta name="description" content="Bulk labels, watchers and restrictions for Confluence Cloud administrators, with a preview before anything changes, resumable jobs and an exportable journal.">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site">
+    <div class="in">
+      <a class="brand" href="index.html"><img src="assets/img/logo.svg" alt="" width="32" height="32">Tidyspace</a>
+      <nav class="site" aria-label="Main">
+        <ul>
+        <li><a href="index.html" aria-current="page">Product</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+<section class="hero" aria-labelledby="hero-title">
+      <div>
+        <h1 id="hero-title">Bulk changes to Confluence, with a preview first</h1>
+        <p class="lead">Tidyspace gives Confluence administrators the bulk actions Confluence does not have: rename a label across the whole site, clean up watchers, grant or remove page access in one job. You see exactly what will change before anything is written.</p>
+        <div class="actions">
+          <a class="btn primary" href="docs.html#install">Get started</a>
+          <a class="btn secondary" href="docs.html">Read the documentation</a>
+        </div>
+      </div>
+      <img src="assets/img/screens/preview.png" width="2200" height="1920" alt="Tidyspace preview of a label rename: 248 items will be processed, 4 excluded because the administrator has no access, 3 restricted pages the app cannot reach, listed with the fix, and a Run button.">
+    </section>
+
+    <h2>What it does</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Labels</h3>
+        <p>Add, remove or replace a label on a selection of pages and blog posts. Rename or merge a label everywhere it is used: one job instead of hundreds of page edits.</p>
+      </div>
+      <div class="card">
+        <h3>Watchers</h3>
+        <p>Add up to 10 people as watchers of a whole space or page tree, remove them, or remove the deactivated accounts that keep cluttering watcher lists after people leave.</p>
+      </div>
+      <div class="card">
+        <h3>Restrictions</h3>
+        <p>Grant “Can view” or “Can edit”, or remove access, for up to 10 users and groups at once. The levels are the ones of the Confluence “Share” dialog, with the access before and after on each page.</p>
+      </div>
+    </div>
+
+    <h2>Why administrators trust it</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Nothing changes before you confirm</h3>
+        <p>Every job starts with a preview: the exact number of items, a sample, and every item that will be left out, with the reason. You run the job only when the preview is right.</p>
+      </div>
+      <div class="card">
+        <h3>Never beyond your own access</h3>
+        <p>Tidyspace acts only on content that you could change yourself. Content you cannot see or edit is excluded and only counted, never shown. To include it, you go through the official Confluence procedure, which is recorded in the audit log.</p>
+      </div>
+      <div class="card">
+        <h3>Built for large sites</h3>
+        <p>Jobs of up to 20,000 items run in batches of 50. They pause on Confluence API limits and resume on their own, can be cancelled at any time, and restart where they stopped after an interruption.</p>
+      </div>
+      <div class="card">
+        <h3>A journal for every item</h3>
+        <p>Succeeded, skipped or failed, with the reason in plain words. Export the journal as CSV: it opens cleanly in Excel, in English or in French.</p>
+      </div>
+      <div class="card">
+        <h3>Runs entirely on Atlassian</h3>
+        <p>Tidyspace is built on Atlassian Forge, with no external server and no outbound connection. Your content never leaves Atlassian’s platform, and the publisher has no access to it.</p>
+      </div>
+      <div class="card">
+        <h3>Safe restrictions</h3>
+        <p>A removal that would leave a page accessible to nobody but the app is refused and reported. Restricted pages the app cannot reach are listed, with the one-step fix.</p>
+      </div>
+    </div>
+
+    <h2>How it works</h2>
+    <figure class="shot">
+      <img src="assets/img/listing/select-annotated.png" width="1840" height="900" alt="Step 1, Select: choose the function and action, check spaces and pages in the tree, refine by type, label or last modified date.">
+      <figcaption><strong>1. Select.</strong> Choose the function and the content: spaces, pages and folders in a tree, filters by type, label and last modified date, or a CQL query.</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="assets/img/listing/preview-annotated.png" width="1840" height="900" alt="Step 2, Preview: count of items to process, items excluded for lack of access, restricted items the app cannot reach, Run button.">
+      <figcaption><strong>2. Preview.</strong> The real number of items, the items left out and why. Nothing has been written yet.</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="assets/img/listing/restrictions-annotated.png" width="1840" height="900" alt="Restrictions preview: access before and after on each page, items already in the restriction skipped, removal that would lock people out refused.">
+      <figcaption><strong>For restrictions,</strong> the access on each page before and after the job.</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="assets/img/listing/verify-annotated.png" width="1840" height="900" alt="Steps 3 and 4, Run and verify: counts of succeeded, skipped and failed items, journal export as CSV, failed items with their reason.">
+      <figcaption><strong>3. Run, 4. Verify.</strong> Progress batch by batch, then the result of every item and the CSV export.</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="assets/img/listing/history-annotated.png" width="1840" height="900" alt="Job history: label rename, watcher cleanup, restrictions and labels jobs with their status and size, and a Re-run action.">
+      <figcaption><strong>Job history.</strong> Every job of the site, and a Re-run that prepares a fresh preview.</figcaption>
+    </figure>
+
+    <div class="band">
+      <h2>Who it is for</h2>
+      <p>Tidyspace is for <strong>Confluence administrators</strong> of Confluence Cloud sites. It appears in the Confluence administration settings, and every action is checked on the server: people without the Confluence administrator permission cannot use it.</p>
+      <p>Interface in English and in French, following each person’s Confluence language.</p>
+    </div>
+
+    <h2>Questions</h2>
+    <details>
+      <summary>Can a job be undone?</summary>
+      <p>Not automatically. That is why every job starts with a preview, and why the journal records each item: to revert a label change, run the opposite job (for example, replace the new label with the old one) on the same selection.</p>
+    </details>
+    <details>
+      <summary>Does Tidyspace archive, move or delete pages?</summary>
+      <p>No. Tidyspace changes labels, watchers and restrictions only. It never moves, archives, deletes or edits the content of a page.</p>
+    </details>
+    <details>
+      <summary>Why are some pages “not processed because the app cannot see them”?</summary>
+      <p>A page restricted for viewing is invisible to every app that is not part of the restriction. Tidyspace lists these pages in the preview; to include them, add the app “Tidyspace” to the page through “Share”, then refresh the preview. <a href="docs.html#hidden">More in the documentation</a>.</p>
+    </details>
+    <details>
+      <summary>What data does Tidyspace keep?</summary>
+      <p>Only what a job needs: identifiers and titles of the selected items, the people and groups chosen, and the result of each item. It stays in the app’s storage on Atlassian’s platform, in the same location as your Confluence data, and is deleted 90 days after the job’s last activity. See the <a href="privacy.html">privacy policy</a>.</p>
+    </details>
+  </main>
+  <footer class="site">
+    <div class="in">
+      <p>© 2026 __PUBLISHER_NAME__. Tidyspace is an app for Confluence Cloud. Confluence and Atlassian are trademarks of Atlassian; Tidyspace is not made or endorsed by Atlassian.</p>
+      <ul>
+        <li><a href="index.html" aria-current="page">Product</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

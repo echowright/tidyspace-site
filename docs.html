@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentation · Tidyspace</title>
+  <meta name="description" content="How to install and use Tidyspace for Confluence Cloud: select content, preview, run and verify bulk changes to labels, watchers and restrictions.">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site">
+    <div class="in">
+      <a class="brand" href="index.html"><img src="assets/img/logo.svg" alt="" width="32" height="32">Tidyspace</a>
+      <nav class="site" aria-label="Main">
+        <ul>
+        <li><a href="index.html">Product</a></li>
+        <li><a href="docs.html" aria-current="page">Documentation</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="doc">
+<h1>Tidyspace documentation</h1>
+    <p class="lead">How to make bulk changes to labels, watchers and restrictions in Confluence Cloud, safely.</p>
+
+    <nav class="toc" aria-label="Contents">
+      <strong>Contents</strong>
+      <ol>
+        <li><a href="#install">Install and open Tidyspace</a></li>
+        <li><a href="#steps">How a job works</a></li>
+        <li><a href="#select">Step 1: select</a></li>
+        <li><a href="#preview">Step 2: preview</a></li>
+        <li><a href="#run">Step 3: run</a></li>
+        <li><a href="#verify">Step 4: verify</a></li>
+        <li><a href="#history">Job history and re-run</a></li>
+        <li><a href="#labels">Labels</a></li>
+        <li><a href="#watchers">Watchers</a></li>
+        <li><a href="#restrictions">Restrictions</a></li>
+        <li><a href="#limits">Limits</a></li>
+        <li><a href="#data">Data kept by Tidyspace</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="install">1. Install and open Tidyspace</h2>
+    <p><strong>Who can install it:</strong> a site administrator (organization or site admin) installs Tidyspace from the Atlassian Marketplace, on the Confluence Cloud site. During installation, Confluence lists the permissions the app requests; they are explained in the <a href="security.html#scopes">security page</a>.</p>
+    <p><strong>Who can use it:</strong> people with the <em>Confluence administrator</em> permission on the site. Everyone else sees a message that the app is reserved to Confluence administrators; the check is made on the server for every action, not only in the interface.</p>
+    <p><strong>Where to find it:</strong> in Confluence, open <strong>Settings</strong> (the gear icon), then select <strong>Tidyspace</strong> in the sidebar. The interface follows your Confluence language: French if your profile is in French, English otherwise.</p>
+    <p>Tidyspace acts on <strong>pages and blog posts</strong>. Attachments, comments and other content types are never changed.</p>
+
+    <h2 id="steps">2. How a job works</h2>
+    <p>Every change is a <strong>job</strong>, which goes through four steps, shown at the top of the screen:</p>
+    <ol>
+      <li><strong>Select</strong> the action and the content.</li>
+      <li><strong>Preview</strong> what will change. Nothing is written at this step.</li>
+      <li><strong>Run</strong> the job after confirming. It processes the content in batches of 50.</li>
+      <li><strong>Verify</strong> the result of each item, in the panel or in the CSV journal.</li>
+    </ol>
+    <div class="note warn"><strong>A job cannot be undone automatically.</strong> Check the preview before running it. To revert a change, run the opposite job on the same selection (for example, replace the new label with the old one).</div>
+
+    <h2 id="select">3. Step 1: select</h2>
+    <figure class="shot">
+      <img src="assets/img/screens/select.png" width="2200" height="1960" alt="The New job form: function and action, label, content tree with checked pages, refine options and the Prepare the preview button.">
+    </figure>
+    <h3>What to do</h3>
+    <p>Choose the <strong>function</strong> (Labels, Watchers or Restrictions), then the <strong>action</strong>. Each function is described below: <a href="#labels">labels</a>, <a href="#watchers">watchers</a>, <a href="#restrictions">restrictions</a>.</p>
+    <h3>On which content</h3>
+    <p><strong>Choose in the tree</strong> (default):</p>
+    <ul>
+      <li>check a <strong>space</strong> to select all its content;</li>
+      <li>expand a space to check <strong>pages</strong> or <strong>folders</strong>. With <em>Include child pages of checked pages</em> (on by default), everything under a checked page or folder is included;</li>
+      <li>use <em>Filter spaces</em> to find a space by name or key. Personal spaces are listed too;</li>
+      <li>every page shows an expand arrow; a page without children shows “No child pages” when expanded.</li>
+    </ul>
+    <p><strong>Refine</strong> the selection:</p>
+    <ul>
+      <li><strong>Pages</strong> and <strong>Blog posts</strong>: the content types to include;</li>
+      <li><strong>With the label</strong>: only content that already has this label;</li>
+      <li><strong>Last modified</strong>: <em>Recent</em> (less than 30 days, 3 months, 6 months or 1 year ago) or <em>Old</em> (more than that). “Old, more than 1 year” is a quick way to find stale content.</li>
+    </ul>
+    <p><strong>Advanced CQL</strong>: write a Confluence Query Language query, for example <code>type = page AND space = "ABC" AND lastmodified &lt; now("-180d")</code>. It is run as is; only pages and blog posts it returns are processed.</p>
+    <p>Select <strong>Prepare the preview</strong>. No content is changed at this point.</p>
+
+    <h2 id="preview">4. Step 2: preview</h2>
+    <figure class="shot">
+      <img src="assets/img/screens/preview.png" width="2200" height="1920" alt="A preview: 248 items will be processed, 4 excluded because you do not have access, 3 restricted items the app cannot see, the first items of the selection and the Run button.">
+    </figure>
+    <h3>Preparing</h3>
+    <p>Tidyspace first collects the content the app can reach, then checks your own access, item by item. The counter moves at each stage; for 1,000 pages, preparing takes about 40 seconds. Keep the page open until the preview is ready.</p>
+    <h3>What the preview shows</h3>
+    <ul>
+      <li><strong>“N items will be processed. Nothing has been changed yet.”</strong> This is a real count of the items, not a search estimate.</li>
+      <li><strong>The first items of the selection</strong>, as a sample.</li>
+      <li><strong>Items excluded because you do not have access</strong> (see below).</li>
+      <li><strong>Items that will not be processed because the app cannot see them</strong> (see below).</li>
+      <li>For restrictions: the <strong>differences</strong> before and after on the first items (see <a href="#restrictions">restrictions</a>).</li>
+    </ul>
+    <h3 id="excluded">Items excluded because you do not have access</h3>
+    <p>Tidyspace only acts on content <strong>you could change yourself</strong>: content you can view and, for this action, edit (for labels and watchers) or restrict (for restrictions). If the app can reach content that you cannot, that content is excluded. It is only counted: its title is never shown, in the preview, the journal or the export.</p>
+    <p>To include it, obtain access through the official Confluence procedure (<a href="https://support.atlassian.com/confluence-cloud/docs/manage-global-permissions/" rel="noopener">recover space permissions</a>), which is recorded in the audit log, then refresh the preview.</p>
+    <h3 id="hidden">Items the app cannot see</h3>
+    <p>A page restricted for viewing is hidden from every app that is not part of its restriction. Tidyspace lists these items (up to 50 titles, with the total). To include them: on each page, open <strong>Share</strong>, add the app <strong>Tidyspace</strong> (choose the app itself, never an email address), then refresh the preview.</p>
+    <h3>Other preview messages</h3>
+    <ul>
+      <li><strong>No content to process</strong>: the selection is empty, or none of it is accessible to both you and the app. Change the selection.</li>
+      <li><strong>Selection too large</strong>: you have access to more than 20,000 items in the selection. Nothing is kept; narrow the selection by space, page, label or date.</li>
+    </ul>
+    <h3>Refresh, edit or discard</h3>
+    <ul>
+      <li><strong>Refresh the preview</strong> recomputes everything with the current content and access. Use it after changing a permission or a restriction.</li>
+      <li><strong>Edit</strong> returns to the form with the same choices; the new preview replaces the old one.</li>
+      <li><strong>Discard</strong> abandons the preview. Nothing was changed.</li>
+    </ul>
+    <div class="note"><strong>Two timing rules.</strong> Confluence search takes <strong>a few minutes</strong> (usually 3 to 6) to reflect a permission change or a recent edit: wait before refreshing. And the preview reflects access <strong>at the time it was prepared</strong>: if someone’s access to some pages changed since, refresh the preview before running the job.</div>
+
+    <h2 id="run">5. Step 3: run</h2>
+    <p>Select <strong>Run on N items</strong>, then confirm. The job processes the selection in batches of 50, in the background: you can close the page and come back later from <a href="#history">Job history</a>.</p>
+    <ul>
+      <li><strong>Paused</strong>: Confluence limits how many requests apps can make per hour. When the limit is reached, the job pauses and resumes automatically; no action is needed.</li>
+      <li><strong>Cancel the job</strong>: the current batch finishes, then the job stops. Batches already processed stay applied.</li>
+      <li><strong>Interrupted</strong>: if the job has not progressed for 20 minutes (for example, a platform event was lost), select <strong>Resume</strong>. It restarts from the batch where it stopped, without redoing what is done.</li>
+      <li><strong>Stopped</strong>: before each batch, Tidyspace checks that the person who started the job still has an active account and is still a Confluence administrator. If not, the job stops; batches already processed stay applied.</li>
+    </ul>
+
+    <h2 id="verify">6. Step 4: verify</h2>
+    <figure class="shot">
+      <img src="assets/img/screens/verify.png" width="2200" height="1320" alt="A finished job: 245 succeeded, 3 failed, export of the journal, and the list of failed or skipped items with their reason.">
+    </figure>
+    <p>At the end, the panel shows the counts (succeeded, skipped, failed) and what to do next. The failed and skipped items are listed with their reason (the first 100; the export has them all).</p>
+    <p><strong>Export the journal (CSV)</strong> downloads one line per item: title, ID, space, type, result, reason, link and batch. The file is in your language and opens directly in Excel: columns separated by <code>;</code> in French and <code>,</code> in English, UTF-8 encoding.</p>
+    <p>Confluence search can take a few minutes to show the changes: for example, a page search by the new label may not find every page right away. The journal is the reference.</p>
+    <h3>Results</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Result</th><th>Meaning and what to do</th></tr></thead>
+      <tbody>
+        <tr><td>Permission denied</td><td>The content is restricted for editing, or the app lacks a permission (see <a href="#watchers">watchers</a>). Fix the access, then re-run the job.</td></tr>
+        <tr><td>Content not found or hidden</td><td>The content was deleted, moved to the trash or restricted after the preview.</td></tr>
+        <tr><td>Label absent: nothing to remove</td><td>Skipped (removal): the content did not have the label.</td></tr>
+        <tr><td>Partial</td><td>Replacement: the new label was added, but the old one could not be removed. Re-run the job to finish.</td></tr>
+        <tr><td>Already in the restriction / Not in the restriction</td><td>Skipped: nothing to change.</td></tr>
+        <tr><td>Left unchanged: the removal would have left only the app</td><td>Refused on purpose, see <a href="#restrictions">restrictions</a>.</td></tr>
+        <tr><td>No deactivated watcher</td><td>Skipped: no watcher to remove.</td></tr>
+        <tr><td>Confluence server error, Conflict, Request refused</td><td>Confluence refused or failed the change. Re-run the job later; if it persists, <a href="support.html">contact support</a>.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="history">7. Job history and re-run</h2>
+    <figure class="shot">
+      <img src="assets/img/screens/history.png" width="2200" height="840" alt="Job history: date, action, status, number of items and Re-run for each job.">
+    </figure>
+    <p><strong>Job history</strong> lists the 20 most recent jobs of the site. Select a job’s name to open it.</p>
+    <p><strong>Re-run</strong> prepares a <strong>new preview</strong> of the same job, based on the content and access of today. Nothing runs without your confirmation. Use it to retry after fixing failures, or to repeat a job regularly.</p>
+    <p><strong>Jobs of other administrators:</strong> the details of a job (titles, selection, journal, export) are only visible to the person who prepared it, because they reflect that person’s own access. Other administrators see its status and counts; they can cancel it, or re-run it to get a preview based on their own access.</p>
+
+    <h2 id="labels">8. Labels</h2>
+    <ul>
+      <li><strong>Add a label</strong> or <strong>Remove a label</strong> on the selection.</li>
+      <li><strong>Replace a label (rename or merge)</strong>: on each item that has the current label, add the new one, then remove the old one (only once the new one is in place). If the new label already exists on some items, the two labels are merged.</li>
+      <li><strong>Across the whole site</strong> (replace only, on by default): all content with the current label, in every space. Uncheck it to limit the replacement to a selection.</li>
+    </ul>
+    <p>Labels are converted to lowercase, are 255 characters at most, and cannot contain spaces or the characters <code>:;,.?&amp;[]()#^*@!&lt;&gt;</code>, as in Confluence.</p>
+
+    <h2 id="watchers">9. Watchers</h2>
+    <ul>
+      <li><strong>Add watchers</strong> or <strong>Remove watchers</strong>: up to 10 people per job. The people added receive Confluence notifications for these items.</li>
+      <li><strong>Remove watchers with deactivated accounts</strong>: removes deactivated or closed accounts from the watchers. Accounts with an unknown status and apps are left in place.</li>
+    </ul>
+    <div class="note">Confluence only lets an app change another person’s watch status if the app has administrator rights. If watcher changes fail with “Permission denied”, give the app <strong>Tidyspace</strong> the space administration permission in the space settings (or the site-wide equivalent), then re-run the job.</div>
+
+    <h2 id="restrictions">10. Restrictions</h2>
+    <ul>
+      <li><strong>Grant access</strong> with <strong>Can view</strong> (read only) or <strong>Can edit</strong>, to up to 10 users and groups. Unrestricted content becomes restricted: only the people listed, the people already in the restriction and the app have access.</li>
+      <li><strong>Remove access</strong>: the people and groups listed lose their restricted access (view and edit).</li>
+    </ul>
+    <p>The levels are those of the Confluence <strong>Share</strong> dialog. The preview shows, for the first items, the access before and after the job, with the effect on each item.</p>
+    <figure class="shot">
+      <img src="assets/img/screens/restrictions.png" width="2200" height="1720" alt="Restrictions preview: for each page, the access before and after, the effect, and an item left unchanged because the removal would have left only the app.">
+    </figure>
+    <h3>Two rules that protect your content</h3>
+    <ul>
+      <li><strong>The app is added with “Can edit”</strong> to every restriction it sets. Confluence refuses a restriction that excludes the app that sets it, and an app with view-only access could no longer change the page’s labels or restrictions.</li>
+      <li><strong>A removal that would leave only the app</strong> able to view or edit a page is refused and reported (“Left unchanged”). Otherwise the page would become inaccessible to people; removing the app as well would lift the restriction entirely.</li>
+    </ul>
+    <p>If the app is in a restriction with “Can view” only, the item fails with a message asking to set the app to “Can edit” through <strong>Share</strong>, then re-run.</p>
+
+    <h2 id="limits">11. Limits</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Limit</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Items per job (that you have access to)</td><td>20,000; above, the job refuses to start, nothing is truncated</td></tr>
+        <tr><td>Spaces, pages and folders checked in the tree</td><td>200 (check a whole space or use a label instead)</td></tr>
+        <tr><td>Users per watchers job, users and groups per restrictions job</td><td>10</td></tr>
+        <tr><td>CQL query</td><td>4,000 characters</td></tr>
+        <tr><td>Batch size</td><td>50 items</td></tr>
+        <tr><td>Failed or skipped items shown in the panel</td><td>100 (all of them in the CSV export)</td></tr>
+        <tr><td>Jobs in the history</td><td>the 20 most recent</td></tr>
+        <tr><td>Content types</td><td>pages and blog posts</td></tr>
+      </tbody>
+    </table></div>
+    <p>Tidyspace does not archive, move, delete or edit the content of pages, does not change page owners, and cannot reach other people’s drafts.</p>
+
+    <h2 id="data">12. Data kept by Tidyspace</h2>
+    <p>A job keeps the identifiers, titles, types and spaces of the selected items, the people and groups chosen, and the result of each item, so that the job can run, be resumed and be exported. This data stays in the app’s storage on Atlassian’s platform; it is <strong>deleted 90 days after the job’s last activity</strong>, at which point the job leaves the history. Export the journal before then if you need to keep it. When the app is uninstalled, Atlassian deletes its data after 28 days. Details in the <a href="privacy.html">privacy policy</a>.</p>
+
+    <h2 id="troubleshooting">13. Troubleshooting</h2>
+    <details>
+      <summary>“Tidyspace is reserved to Confluence administrators.”</summary>
+      <p>Your account does not have the Confluence administrator permission. Ask a site administrator to grant it (administration of Confluence global permissions).</p>
+    </details>
+    <details>
+      <summary>Pages are missing from the preview.</summary>
+      <p>Check the two messages of the preview: content you cannot access is <a href="#excluded">excluded</a>, and restricted content the app cannot see is <a href="#hidden">listed with the fix</a>. If you just changed a permission or created the pages, wait a few minutes for Confluence search to catch up, then refresh the preview.</p>
+    </details>
+    <details>
+      <summary>The job is “Paused”.</summary>
+      <p>Confluence API limit reached. The job resumes automatically when the limit resets, at most one hour later. No action is needed.</p>
+    </details>
+    <details>
+      <summary>The job is “Interrupted”.</summary>
+      <p>Select <strong>Resume</strong>. Only the person who prepared the job can resume it.</p>
+    </details>
+    <details>
+      <summary>A search by label still finds the old label after the job.</summary>
+      <p>Confluence search takes a few minutes to update. The journal shows the actual result of each item.</p>
+    </details>
+    <details>
+      <summary>An error message mentions the Forge job queue.</summary>
+      <p>The Atlassian platform briefly refused the request. Try again in a few moments; if it persists, check <a href="https://status.atlassian.com" rel="noopener">status.atlassian.com</a> and <a href="support.html">contact support</a>.</p>
+    </details>
+    <p>Still stuck? <a href="support.html">Contact support</a>.</p>
+  </main>
+  <footer class="site">
+    <div class="in">
+      <p>© 2026 __PUBLISHER_NAME__. Tidyspace is an app for Confluence Cloud. Confluence and Atlassian are trademarks of Atlassian; Tidyspace is not made or endorsed by Atlassian.</p>
+      <ul>
+        <li><a href="index.html">Product</a></li>
+        <li><a href="docs.html" aria-current="page">Documentation</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

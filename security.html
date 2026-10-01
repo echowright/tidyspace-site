@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Security · Tidyspace</title>
+  <meta name="description" content="Tidyspace security: architecture on Atlassian Forge, permissions requested, vulnerability reporting, fix timelines and incident response.">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site">
+    <div class="in">
+      <a class="brand" href="index.html"><img src="assets/img/logo.svg" alt="" width="32" height="32">Tidyspace</a>
+      <nav class="site" aria-label="Main">
+        <ul>
+        <li><a href="index.html">Product</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="security.html" aria-current="page">Security</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="doc">
+<h1>Security</h1>
+    <p class="lead">How Tidyspace protects your Confluence site, how to report a vulnerability, and how we handle one.</p>
+
+    <h2 id="report">Report a vulnerability</h2>
+    <p>Security contact: <a href="mailto:__CONTACT_EMAIL__?subject=Tidyspace%20security">__CONTACT_EMAIL__</a>, with “security” in the subject.</p>
+    <p>Please include a description of the issue, the steps to reproduce it, its possible impact, and the site and app version if relevant. Do not include personal data or the content of your pages beyond what is needed.</p>
+    <ul>
+      <li>We acknowledge every report <strong>within 3 business days</strong> and keep you informed until it is resolved.</li>
+      <li>Please give us reasonable time to fix the issue before disclosing it, and do not access, change or delete data that is not yours while testing.</li>
+      <li>Vulnerabilities can also be reported to Atlassian, which forwards them to us through the Atlassian Marketplace security programme.</li>
+    </ul>
+
+    <h2 id="fix-policy">Vulnerability fix policy</h2>
+    <p>Tidyspace follows the <a href="https://developer.atlassian.com/platform/marketplace/security-bugfix-policy/" rel="noopener">Atlassian Security Bug Fix Policy for Marketplace apps</a>. Severity is rated with CVSS; each vulnerability is fixed and released to every installation within these times, counted from the report or its triage:</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Severity</th><th>CVSS score</th><th>Fixed within</th></tr></thead>
+      <tbody>
+        <tr><td>Critical</td><td>9.0 to 10.0</td><td>10 days</td></tr>
+        <tr><td>High</td><td>7.0 to 8.9</td><td>4 weeks</td></tr>
+        <tr><td>Medium</td><td>4.0 to 6.9</td><td>12 weeks</td></tr>
+        <tr><td>Low</td><td>0.1 to 3.9</td><td>25 weeks</td></tr>
+      </tbody>
+    </table></div>
+    <p>Vulnerabilities in dependencies are covered the same way: dependencies are audited before every release, and no release ships with a known critical or high vulnerability. Fixes reach installations as app updates, without action from you, unless the fix requires a new permission, which Confluence then asks a site administrator to approve.</p>
+
+    <h2 id="incidents">Security incidents</h2>
+    <p>A security incident is any unauthorized access to, use, disclosure, change or destruction of customer data, or any compromise of the app. If one happens:</p>
+    <ol>
+      <li>we contain it at once, if needed by disabling the affected function or rolling back to the previous version;</li>
+      <li>we notify Atlassian <strong>within 24 hours</strong> of becoming aware of it, as Atlassian requires of Marketplace partners;</li>
+      <li>we notify the affected customers <strong>without undue delay, and within 72 hours</strong> wherever possible: what happened, what data was concerned, what we did, and what they should do;</li>
+      <li>we fix the cause, then publish a post-incident review to the affected customers and to Atlassian.</li>
+    </ol>
+
+    <h2 id="architecture">How Tidyspace is built</h2>
+    <ul>
+      <li><strong>Runs entirely on Atlassian.</strong> Tidyspace is an Atlassian Forge app: its code runs on Atlassian’s infrastructure and its data is kept in Forge storage. It has no external server, makes no outbound connection, and has no web trigger or other public endpoint. The publisher has no access to your content.</li>
+      <li><strong>Administrators only, checked on the server.</strong> Every action checks, on the server, that the person is a Confluence administrator. Before each batch, a running job checks that the person who started it still has an active account and is still an administrator.</li>
+      <li><strong>Never beyond the user’s own access.</strong> The app changes content with its own permissions, so Tidyspace first checks the access of the person who prepares the job, item by item, and acts only on content that person could change: view and edit for labels and watchers, restrict for restrictions. Content outside that access is excluded and only counted.</li>
+      <li><strong>Job details are private to their author.</strong> Titles, selection, journal and export of a job are only shown to the person who prepared it.</li>
+      <li><strong>No credentials.</strong> Tidyspace never asks for, collects or stores passwords or API tokens.</li>
+      <li><strong>Input validated.</strong> Queries, labels, identifiers and parameters are validated on the server; CQL values are escaped; the CSV export is protected against spreadsheet formula injection.</li>
+      <li><strong>Logs without content.</strong> Diagnostic logs record the function, the error type, an error code and the HTTP status. They do not record page titles, queries or the content of Confluence responses.</li>
+      <li><strong>Reviewed and tested.</strong> Before submission, the app went through a full security review against the Atlassian Marketplace security requirements, static analysis (Atlassian’s Forge Security Requirements Tester, Semgrep, gitleaks: no finding) and a dependency audit (no known vulnerability).</li>
+    </ul>
+
+    <h2 id="scopes">Permissions requested</h2>
+    <p>Tidyspace requests only the permissions its functions need. Each one is required by an API it calls.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Permission</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td><code>search:confluence</code></td><td>Find the content of a selection (CQL search).</td></tr>
+        <tr><td><code>read:space:confluence</code>, <code>read:page:confluence</code>, <code>read:hierarchical-content:confluence</code></td><td>Show spaces, pages and folders in the selection tree.</td></tr>
+        <tr><td><code>write:confluence-content</code></td><td>Add and remove labels, watchers and restrictions.</td></tr>
+        <tr><td><code>read:confluence-content.summary</code></td><td>Read the watchers of a page.</td></tr>
+        <tr><td><code>read:confluence-content.all</code></td><td>Read the restrictions of a page, for the preview and the safety rules.</td></tr>
+        <tr><td><code>read:confluence-user</code>, <code>read:content-details:confluence</code></td><td>Check that the person is an administrator, find users to add, detect deactivated accounts.</td></tr>
+        <tr><td><code>read:confluence-groups</code></td><td>Find groups for restrictions.</td></tr>
+        <tr><td><code>storage:app</code></td><td>Keep jobs and their journal in Forge storage.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="privacy">Data protection</h2>
+    <p>What Tidyspace stores, for how long, and your rights: see the <a href="privacy.html">privacy policy</a>.</p>
+  </main>
+  <footer class="site">
+    <div class="in">
+      <p>© 2026 __PUBLISHER_NAME__. Tidyspace is an app for Confluence Cloud. Confluence and Atlassian are trademarks of Atlassian; Tidyspace is not made or endorsed by Atlassian.</p>
+      <ul>
+        <li><a href="index.html">Product</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="security.html" aria-current="page">Security</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
