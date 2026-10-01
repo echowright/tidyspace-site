@@ -62,10 +62,11 @@
 
     <h2 id="architecture">How Tidyspace is built</h2>
     <ul>
-      <li><strong>Runs entirely on Atlassian.</strong> Tidyspace is an Atlassian Forge app: its code runs on Atlassian’s infrastructure and its data is kept in Forge storage. It has no external server, makes no outbound connection, and has no web trigger or other public endpoint. The publisher has no access to your content.</li>
+      <li><strong>Runs entirely on Atlassian.</strong> Tidyspace is an Atlassian Forge app: its code runs on Atlassian’s infrastructure and its data is kept in Forge storage. It has no external server, makes no outbound connection outside Atlassian, and has no web trigger or other public endpoint. The publisher has no access to your content.</li>
       <li><strong>Administrators only, checked on the server.</strong> Every action checks, on the server, that the person is a Confluence administrator. Before each batch, a running job checks that the person who started it still has an active account and is still an administrator.</li>
       <li><strong>Never beyond the user’s own access.</strong> The app changes content with its own permissions, so Tidyspace first checks the access of the person who prepares the job, item by item, and acts only on content that person could change: view and edit for labels and watchers, restrict for restrictions. Content outside that access is excluded and only counted.</li>
       <li><strong>Job details are private to their author.</strong> Titles, selection, journal and export of a job are only shown to the person who prepared it.</li>
+      <li><strong>Closed accounts erased.</strong> Every week, the app checks the accounts it stores with Atlassian’s personal data reporting service and erases those that were closed (<a href="privacy.html#accounts">privacy policy</a>).</li>
       <li><strong>No credentials.</strong> Tidyspace never asks for, collects or stores passwords or API tokens.</li>
       <li><strong>Input validated.</strong> Queries, labels, identifiers and parameters are validated on the server; CQL values are escaped; the CSV export is protected against spreadsheet formula injection.</li>
       <li><strong>Logs without content.</strong> Diagnostic logs record the function, the error type, an error code and the HTTP status. They do not record page titles, queries or the content of Confluence responses.</li>
@@ -85,6 +86,7 @@
         <tr><td><code>read:confluence-user</code>, <code>read:content-details:confluence</code></td><td>Check that the person is an administrator, find users to add, detect deactivated accounts.</td></tr>
         <tr><td><code>read:confluence-groups</code></td><td>Find groups for restrictions.</td></tr>
         <tr><td><code>storage:app</code></td><td>Keep jobs and their journal in Forge storage.</td></tr>
+        <tr><td><code>report:personal-data</code></td><td>Check every week with Atlassian which stored accounts were closed or changed, and erase them (<a href="privacy.html#accounts">privacy policy</a>).</td></tr>
       </tbody>
     </table></div>
 

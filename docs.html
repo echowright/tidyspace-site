@@ -206,7 +206,7 @@
     <p>Tidyspace does not archive, move, delete or edit the content of pages, does not change page owners, and cannot reach other people’s drafts.</p>
 
     <h2 id="data">12. Data kept by Tidyspace</h2>
-    <p>A job keeps the identifiers, titles, types and spaces of the selected items, the people and groups chosen, and the result of each item, so that the job can run, be resumed and be exported. This data stays in the app’s storage on Atlassian’s platform; it is <strong>deleted 90 days after the job’s last activity</strong>, at which point the job leaves the history. Export the journal before then if you need to keep it. When the app is uninstalled, Atlassian deletes its data after 28 days. Details in the <a href="privacy.html">privacy policy</a>.</p>
+    <p>A job keeps the identifiers, titles, types and spaces of the selected items, the people and groups chosen, and the result of each item, so that the job can run, be resumed and be exported. This data stays in the app’s storage on Atlassian’s platform; it is <strong>deleted 90 days after the job’s last activity</strong>, at which point the job leaves the history. Export the journal before then if you need to keep it. When a person’s Atlassian account is closed, Tidyspace erases their identifier and name from every job within a week (shown as “closed account”). When the app is uninstalled, Atlassian deletes its data after 28 days. Details in the <a href="privacy.html">privacy policy</a>.</p>
 
     <h2 id="troubleshooting">13. Troubleshooting</h2>
     <details>
@@ -228,6 +228,10 @@
     <details>
       <summary>A search by label still finds the old label after the job.</summary>
       <p>Confluence search takes a few minutes to update. The journal shows the actual result of each item.</p>
+    </details>
+    <details>
+      <summary>“Stopped before running: an account used by this job was closed.”</summary>
+      <p>One of the people in the job, or its author, closed their Atlassian account, and Tidyspace erased their data. Nothing was changed. Select <strong>Re-run</strong> to prepare a new preview without that person.</p>
     </details>
     <details>
       <summary>An error message mentions the Forge job queue.</summary>

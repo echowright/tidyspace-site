@@ -110,11 +110,11 @@ questions of the form at the time of submission.
 | Does the app store or process End User Data outside Atlassian? | No. Runs on Atlassian: Forge functions and Forge hosted storage only, no egress, no remote back end. |
 | Where is data stored? | Forge hosted storage (Key-Value Store), scoped to the installation, encrypted at rest, data residency inherited from Confluence. |
 | What End User Data is stored? | Identifiers, titles, types and space keys of the selected content; account IDs and display names of the users chosen; group IDs and names; account ID of the administrator who prepared or started the job; per-item results. No page body, no email address, no credentials. |
-| Retention | 90 days after the job's last activity (time to live on every key); deleted by Atlassian 28 days after uninstallation. |
+| Retention | 90 days after the job's last activity (time to live on every key); closed accounts erased within 7 days; deleted by Atlassian 28 days after uninstallation. |
 | Does the app share data with third parties? | No. |
 | Logging | Forge logs: function, error type, error code, HTTP status; no titles, queries or response bodies. Custom metrics are counters without personal data. |
 | Data residency support | Yes, inherited from Forge hosted storage (check the form's wording: "PINNED" requires the app to meet Forge's conditions). |
-| Does the app use the personal data reporting API? | Not yet: decision pending. The app stores account IDs and display names for up to 90 days; Atlassian requires apps that store personal data to report it weekly and erase closed accounts. Answer once the decision is implemented. |
+| Does the app use the personal data reporting API? | Yes. A daily scheduled trigger reports every 7 days the account IDs stored in jobs, with their retrieval date; closed accounts are erased from every job (a job not yet run is stopped), updated display names are read again or erased. |
 | Authentication | Forge platform only; the app never handles passwords or tokens. |
 | Security contact, vulnerability and incident process | `security.html`. |
 | Compliance certifications | None of its own; relies on Atlassian's platform certifications (Runs on Atlassian). |
