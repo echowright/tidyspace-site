@@ -26,8 +26,31 @@
     </div>
   </header>
   <main id="main" class="doc">
-<h1>Tidyspace documentation</h1>
+<h1 id="top">Tidyspace documentation</h1>
     <p class="lead">How to make bulk changes to labels, watchers and restrictions in Confluence Cloud, safely.</p>
+
+    <section class="quick" id="quickstart" aria-labelledby="quickstart-title">
+      <h2 id="quickstart-title">Quick start</h2>
+      <ol>
+        <li><strong>Install</strong> Tidyspace from the Atlassian Marketplace (a site administrator does this).</li>
+        <li>In Confluence, open <strong>Settings</strong> (gear icon), then <strong>Tidyspace</strong>.</li>
+        <li><strong>Choose the action</strong> (labels, watchers or restrictions) and <strong>the content</strong>.</li>
+        <li><strong>Check the preview</strong>: nothing is changed until you run.</li>
+        <li><strong>Run</strong> the job, then check the result in the panel or the CSV journal.</li>
+      </ol>
+    </section>
+
+    <h2 id="want">I want to…</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>I want to…</th><th>Go to</th></tr></thead>
+      <tbody>
+        <tr><td>Rename or merge a label across the whole site</td><td><a href="#labels">Labels</a></td></tr>
+        <tr><td>Remove watchers whose accounts are deactivated</td><td><a href="#watchers">Watchers</a></td></tr>
+        <tr><td>Give or remove access to pages</td><td><a href="#restrictions">Restrictions</a></td></tr>
+        <tr><td>Understand why pages are missing from the preview</td><td><a href="#excluded">No access</a>, <a href="#hidden">app cannot see them</a></td></tr>
+        <tr><td>Run an old job again</td><td><a href="#history">Job history and re-run</a></td></tr>
+      </tbody>
+    </table></div>
 
     <nav class="toc" aria-label="Contents">
       <strong>Contents</strong>
@@ -49,10 +72,11 @@
     </nav>
 
     <h2 id="install">1. Install and open Tidyspace</h2>
-    <p><strong>Who can install it:</strong> a site administrator (organization or site admin) installs Tidyspace from the Atlassian Marketplace, on the Confluence Cloud site. During installation, Confluence lists the permissions the app requests; they are explained in the <a href="security.html#scopes">security page</a>.</p>
-    <p><strong>Who can use it:</strong> people with the <em>Confluence administrator</em> permission on the site. Everyone else sees a message that the app is reserved to Confluence administrators; the check is made on the server for every action, not only in the interface.</p>
+    <p><strong>Install:</strong> a site administrator (organization or site admin) installs Tidyspace from the Atlassian Marketplace on the Confluence Cloud site. Confluence lists the permissions the app asks for during installation; the <a href="security.html#scopes">security page</a> explains them.</p>
+    <p><strong>Who can use it:</strong> people with the <em>Confluence administrator</em> permission on the site. Everyone else sees a message that the app is reserved to Confluence administrators; this is checked for every action, not only in the interface.</p>
     <p><strong>Where to find it:</strong> in Confluence, open <strong>Settings</strong> (the gear icon), then select <strong>Tidyspace</strong> in the sidebar. The interface follows your Confluence language: French if your profile is in French, English otherwise.</p>
     <p>Tidyspace acts on <strong>pages and blog posts</strong>. Attachments, comments and other content types are never changed.</p>
+    <p class="top"><a href="#top">Back to top</a></p>
 
     <h2 id="steps">2. How a job works</h2>
     <p>Every change is a <strong>job</strong>, which goes through four steps, shown at the top of the screen:</p>
@@ -63,6 +87,7 @@
       <li><strong>Verify</strong> the result of each item, in the panel or in the CSV journal.</li>
     </ol>
     <div class="note warn"><strong>A job cannot be undone automatically.</strong> Check the preview before running it. To revert a change, run the opposite job on the same selection (for example, replace the new label with the old one).</div>
+    <p class="top"><a href="#top">Back to top</a></p>
 
     <h2 id="select">3. Step 1: select</h2>
     <figure class="shot">
@@ -86,6 +111,7 @@
     </ul>
     <p><strong>Advanced CQL</strong>: write a Confluence Query Language query, for example <code>type = page AND space = "ABC" AND lastmodified &lt; now("-180d")</code>. It is run as is; only pages and blog posts it returns are processed.</p>
     <p>Select <strong>Prepare the preview</strong>. No content is changed at this point.</p>
+    <p class="top"><a href="#top">Back to top</a></p>
 
     <h2 id="preview">4. Step 2: preview</h2>
     <figure class="shot">
@@ -118,6 +144,7 @@
       <li><strong>Discard</strong> abandons the preview. Nothing was changed.</li>
     </ul>
     <div class="note"><strong>Two timing rules.</strong> Confluence search takes <strong>a few minutes</strong> (usually 3 to 6) to reflect a permission change or a recent edit: wait before refreshing. And the preview reflects access <strong>at the time it was prepared</strong>: if someone’s access to some pages changed since, refresh the preview before running the job.</div>
+    <p class="top"><a href="#top">Back to top</a></p>
 
     <h2 id="run">5. Step 3: run</h2>
     <p>Select <strong>Run on N items</strong>, then confirm. The job processes the selection in batches of 50, in the background: you can close the page and come back later from <a href="#history">Job history</a>.</p>
@@ -127,6 +154,7 @@
       <li><strong>Interrupted</strong>: if the job has not progressed for 20 minutes (for example, a platform event was lost), select <strong>Resume</strong>. It restarts from the batch where it stopped, without redoing what is done.</li>
       <li><strong>Stopped</strong>: before each batch, Tidyspace checks that the person who started the job still has an active account and is still a Confluence administrator. If not, the job stops; batches already processed stay applied.</li>
     </ul>
+    <p class="top"><a href="#top">Back to top</a></p>
 
     <h2 id="verify">6. Step 4: verify</h2>
     <figure class="shot">
@@ -149,6 +177,7 @@
         <tr><td>Confluence server error, Conflict, Request refused</td><td>Confluence refused or failed the change. Re-run the job later; if it persists, <a href="support.html">contact support</a>.</td></tr>
       </tbody>
     </table></div>
+    <p class="top"><a href="#top">Back to top</a></p>
 
     <h2 id="history">7. Job history and re-run</h2>
     <figure class="shot">
@@ -157,6 +186,7 @@
     <p><strong>Job history</strong> lists the 20 most recent jobs of the site. Select a job’s name to open it.</p>
     <p><strong>Re-run</strong> prepares a <strong>new preview</strong> of the same job, based on the content and access of today. Nothing runs without your confirmation. Use it to retry after fixing failures, or to repeat a job regularly.</p>
     <p><strong>Jobs of other administrators:</strong> the details of a job (titles, selection, journal, export) are only visible to the person who prepared it, because they reflect that person’s own access. Other administrators see its status and counts; they can cancel it, or re-run it to get a preview based on their own access.</p>
+    <p class="top"><a href="#top">Back to top</a></p>
 
     <h2 id="labels">8. Labels</h2>
     <ul>
@@ -165,6 +195,7 @@
       <li><strong>Across the whole site</strong> (replace only, on by default): all content with the current label, in every space. Uncheck it to limit the replacement to a selection.</li>
     </ul>
     <p>Labels are converted to lowercase, are 255 characters at most, and cannot contain spaces or the characters <code>:;,.?&amp;[]()#^*@!&lt;&gt;</code>, as in Confluence.</p>
+    <p class="top"><a href="#top">Back to top</a></p>
 
     <h2 id="watchers">9. Watchers</h2>
     <ul>
@@ -172,6 +203,7 @@
       <li><strong>Remove watchers with deactivated accounts</strong>: removes deactivated or closed accounts from the watchers. Accounts with an unknown status and apps are left in place.</li>
     </ul>
     <div class="note">Confluence only lets an app change another person’s watch status if the app has administrator rights. If watcher changes fail with “Permission denied”, give the app <strong>Tidyspace</strong> the space administration permission in the space settings (or the site-wide equivalent), then re-run the job.</div>
+    <p class="top"><a href="#top">Back to top</a></p>
 
     <h2 id="restrictions">10. Restrictions</h2>
     <ul>
@@ -188,6 +220,7 @@
       <li><strong>A removal that would leave only the app</strong> able to view or edit a page is refused and reported (“Left unchanged”). Otherwise the page would become inaccessible to people; removing the app as well would lift the restriction entirely.</li>
     </ul>
     <p>If the app is in a restriction with “Can view” only, the item fails with a message asking to set the app to “Can edit” through <strong>Share</strong>, then re-run.</p>
+    <p class="top"><a href="#top">Back to top</a></p>
 
     <h2 id="limits">11. Limits</h2>
     <div class="table-wrap"><table>
@@ -204,9 +237,11 @@
       </tbody>
     </table></div>
     <p>Tidyspace does not archive, move, delete or edit the content of pages, does not change page owners, and cannot reach other people’s drafts.</p>
+    <p class="top"><a href="#top">Back to top</a></p>
 
     <h2 id="data">12. Data kept by Tidyspace</h2>
     <p>A job keeps the identifiers, titles, types and spaces of the selected items, the people and groups chosen, and the result of each item, so that the job can run, be resumed and be exported. This data stays in the app’s storage on Atlassian’s platform; it is <strong>deleted 90 days after the job’s last activity</strong>, at which point the job leaves the history. Export the journal before then if you need to keep it. When a person’s Atlassian account is closed, Tidyspace erases their identifier and name from every job within a week (shown as “closed account”). When the app is uninstalled, Atlassian deletes its data after 28 days. Details in the <a href="privacy.html">privacy policy</a>.</p>
+    <p class="top"><a href="#top">Back to top</a></p>
 
     <h2 id="troubleshooting">13. Troubleshooting</h2>
     <details>
@@ -234,10 +269,11 @@
       <p>One of the people in the job, or its author, closed their Atlassian account, and Tidyspace erased their data. Nothing was changed. Select <strong>Re-run</strong> to prepare a new preview without that person.</p>
     </details>
     <details>
-      <summary>An error message mentions the Forge job queue.</summary>
-      <p>The Atlassian platform briefly refused the request. Try again in a few moments; if it persists, check <a href="https://status.atlassian.com" rel="noopener">status.atlassian.com</a> and <a href="support.html">contact support</a>.</p>
+      <summary>The error says “The Forge job queue refused the request.”</summary>
+      <p>Atlassian’s platform briefly refused to queue the job. Wait a minute and try again. If it keeps happening, check <a href="https://status.atlassian.com" rel="noopener">status.atlassian.com</a>, then <a href="support.html">contact support</a>.</p>
     </details>
     <p>Still stuck? <a href="support.html">Contact support</a>.</p>
+    <p class="top"><a href="#top">Back to top</a></p>
   </main>
   <footer class="site">
     <div class="in">
