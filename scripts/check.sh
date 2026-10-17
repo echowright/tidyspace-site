@@ -8,6 +8,7 @@ if grep -rn '__[A-Z_]*__' --include='*.html' --include='*.md' --exclude=README.m
   echo 'Placeholders left: run scripts/set-identity.sh' >&2; status=1
 fi
 for f in *.html; do
+  grep -q 'http-equiv="Content-Security-Policy"' "$f" || { echo "$f: missing meta CSP" >&2; status=1; }
   for ref in $(grep -o -E '(href|src)="[^"#]+' "$f" | sed -E 's/^(href|src)="//' | grep -v ':' | sort -u); do
     [ -e "$ref" ] || { echo "$f: missing $ref" >&2; status=1; }
   done
