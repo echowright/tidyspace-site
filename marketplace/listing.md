@@ -84,7 +84,7 @@ Built on Atlassian Forge: no external server, no data leaves Atlassian. In Engli
 
 ## Links
 
-Base URL once GitHub Pages is enabled: `https://corentinregnier.github.io/tidyspace-site/`
+Base URL once GitHub Pages is enabled: `https://echowright.github.io/tidyspace-site/`
 
 | Field | URL |
 |---|---|
@@ -130,7 +130,7 @@ Confluence administrator permission. Open Confluence administration (gear icon) 
 Suggested test: Labels > Add a label "review-test" on one space, Prepare the preview, Run, then
 check the journal and export it. Restrictions and watchers can be tested the same way on a test
 page. A job changes content immediately after confirmation; use a test space.
-Documentation: https://corentinregnier.github.io/tidyspace-site/docs.html
+Documentation: https://echowright.github.io/tidyspace-site/docs.html
 ```
 
 ## Partner profile (Manage partner account)
