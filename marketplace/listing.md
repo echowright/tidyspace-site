@@ -132,3 +132,38 @@ check the journal and export it. Restrictions and watchers can be tested the sam
 page. A job changes content immediately after confirmation; use a test space.
 Documentation: https://corentinregnier.github.io/tidyspace-site/docs.html
 ```
+
+## Partner profile (Manage partner account)
+
+Field values for the vendor profile. Public site: `https://echowright.github.io/tidyspace-site/`.
+
+**Partner name** (40 max)
+
+```
+Tidyspace
+```
+
+**Description** (750 max)
+
+```
+Tidyspace builds focused tools for Confluence Cloud administrators. Our first app performs bulk actions that Confluence does not offer natively: add, remove or rename labels, manage watchers and set page restrictions across hundreds of pages at once. Every job starts with an exact preview, runs in resumable batches and leaves a journal you can export. The apps run entirely on Atlassian Forge: no external server, no data leaves your Atlassian site. Documentation, support and security information are published on our website.
+```
+
+**Website**
+
+```
+https://echowright.github.io/tidyspace-site/
+```
+
+**Support / contact email** (shown to customers)
+
+```
+tidyspace.support@gmail.com
+```
+
+**Logo** (144x144): `assets/img/listing/logo-144.png`.
+
+**Security contact**: `tidyspace.support@gmail.com`, with an `ecosystem.atlassian.net` account able to open
+tickets on the support portal.
+
+Postal address, if the form requires one: entered privately in the form, never on the public site.
