@@ -126,7 +126,7 @@ Paste into the "notes for reviewers" field if the form has one, or into the subm
 ```
 Tidyspace is a Forge app (Custom UI page in Confluence global settings, async events consumer,
 Forge KVS). It is reserved to Confluence administrators: please test with an account that has the
-Confluence administrator permission. Open Settings > Tidyspace.
+Confluence administrator permission. Open Confluence administration (gear icon) > Apps > Tidyspace.
 Suggested test: Labels > Add a label "review-test" on one space, Prepare the preview, Run, then
 check the journal and export it. Restrictions and watchers can be tested the same way on a test
 page. A job changes content immediately after confirmation; use a test space.
