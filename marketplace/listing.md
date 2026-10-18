@@ -15,7 +15,7 @@ Tidyspace: bulk labels, watchers & restrictions
 **Tagline** (130 max)
 
 ```
-Bulk-edit labels, watchers and page restrictions across Confluence, with a preview before anything changes and a full journal.
+Bulk-edit labels, watchers and page restrictions across Confluence, with a preview before anything changes and a full journal
 ```
 
 **Summary** (legacy field, 250 max)
