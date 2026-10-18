@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>Rename or merge a label across a Confluence site · Tidyspace</title>
+  <meta name="description" content="How a Confluence Cloud administrator can rename or merge a label on every page of a site in one previewed job, with a CSV log of the result.">
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site">
+    <div class="in">
+      <a class="brand" href="../index.html"><img src="../assets/img/logo.svg" alt="" width="32" height="32">Tidyspace</a>
+      <nav class="site" aria-label="Main">
+        <ul>
+        <li><a href="../index.html">Product</a></li>
+        <li><a href="../docs.html">Documentation</a></li>
+        <li><a href="index.html" aria-current="page">Guides</a></li>
+        <li><a href="../support.html">Support</a></li>
+        <li><a href="../security.html">Security</a></li>
+        <li><a href="../privacy.html">Privacy</a></li>
+        <li><a href="../terms.html">Terms</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="doc">
+<h1 id="top">How to rename or merge a label across a whole Confluence site</h1>
+    <p class="lead">A label is spelled two ways, or a team renamed a project. Here is how to fix every page in one job, without editing pages one by one.</p>
+
+    <h2 id="problem">The problem</h2>
+    <p>Labels drift. <code>q3-roadmap</code> and <code>roadmap-q3</code> end up on different pages, a product is renamed, or a label is simply misspelled. Confluence lets you add or remove a label on a page, but to my knowledge it has no built-in way to rename a label across every space of a site. Editing each page by hand does not scale beyond a few dozen pages.</p>
+
+    <h2 id="steps">Steps with Tidyspace</h2>
+    <p>You need to be a Confluence administrator and have <a href="../docs.html#install">Tidyspace installed</a> from the Atlassian Marketplace.</p>
+    <ol>
+      <li>In Confluence, open <strong>Confluence administration</strong>, then <strong>Apps</strong>, then <strong>Tidyspace</strong>.</li>
+      <li>Choose <strong>Labels</strong>, then the action <strong>Replace a label (rename or merge)</strong>.</li>
+      <li>Enter the <strong>current label</strong> and the <strong>new label</strong>. Labels are lowercase, with no spaces, as in Confluence.</li>
+      <li>Leave <strong>Across the whole site</strong> checked to cover every space, or uncheck it and select only some spaces or pages.</li>
+      <li>Click <strong>Prepare the preview</strong>. Nothing is written yet.</li>
+    </ol>
+    <figure class="shot">
+      <img src="../assets/img/screens/select.png" width="2296" height="2056" alt="The New job form: function and action, label, content tree with checked pages, refine options and the Prepare the preview button.">
+    </figure>
+
+    <h2 id="preview">Check the preview</h2>
+    <p>The preview lists how many items will be processed and the first items of the selection. It also tells you about two cases to know before you run:</p>
+    <ul>
+      <li><strong>Pages you cannot access</strong> are excluded and only counted. Tidyspace never lets you change content your own account could not edit.</li>
+      <li><strong>Restricted pages the app cannot see</strong> are listed with the fix (add the app through Share), so you can include them.</li>
+    </ul>
+    <figure class="shot">
+      <img src="../assets/img/screens/preview.png" width="2296" height="2016" alt="A preview: 248 items will be processed, 4 excluded because you do not have access, 3 restricted items the app cannot see, the first items of the selection and the Run button.">
+    </figure>
+
+    <h2 id="run">Run, then verify</h2>
+    <p>Click <strong>Run</strong>. On each page, Tidyspace adds the new label, then removes the old one only once the new one is in place. If the new label already exists on a page, the two are simply merged. Jobs run in batches of 50, pause by themselves when Confluence rate limits are reached, and can be resumed or cancelled.</p>
+    <p>When the job ends, failed or skipped pages are shown in the panel and all of them are in the <strong>CSV export</strong>.</p>
+    <figure class="shot">
+      <img src="../assets/img/screens/verify.png" width="2296" height="1416" alt="A finished job: 245 succeeded, 3 failed, export of the journal, and the list of failed or skipped items with their reason.">
+    </figure>
+
+    <h2 id="notes">Good to know</h2>
+    <ul>
+      <li>Search results can lag a few minutes after a change, so Tidyspace uses its own log as the reference, not a new search.</li>
+      <li>A job handles up to 20,000 pages you have access to; above that it refuses to start rather than truncating.</li>
+      <li>Details and limits: <a href="../docs.html#labels">documentation, Labels</a> and <a href="../docs.html#limits">Limits</a>.</li>
+    </ul>
+    <p class="top"><a href="index.html">All guides</a> · <a href="#top">Back to top</a></p>
+  </main>
+  <footer class="site">
+    <div class="in">
+      <p>© 2026 Corentin Regnier. Tidyspace is an app for Confluence Cloud. Confluence and Atlassian are trademarks of Atlassian; Tidyspace is not made or endorsed by Atlassian.</p>
+      <ul>
+        <li><a href="../index.html">Product</a></li>
+        <li><a href="../docs.html">Documentation</a></li>
+        <li><a href="index.html">Guides</a></li>
+        <li><a href="../support.html">Support</a></li>
+        <li><a href="../security.html">Security</a></li>
+        <li><a href="../privacy.html">Privacy</a></li>
+        <li><a href="../terms.html">Terms</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

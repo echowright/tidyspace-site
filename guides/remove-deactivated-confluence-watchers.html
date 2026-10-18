@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>Remove deactivated users from Confluence watchers · Tidyspace</title>
+  <meta name="description" content="How a Confluence Cloud administrator can remove watchers whose accounts are deactivated or closed from many pages in one previewed job.">
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site">
+    <div class="in">
+      <a class="brand" href="../index.html"><img src="../assets/img/logo.svg" alt="" width="32" height="32">Tidyspace</a>
+      <nav class="site" aria-label="Main">
+        <ul>
+        <li><a href="../index.html">Product</a></li>
+        <li><a href="../docs.html">Documentation</a></li>
+        <li><a href="index.html" aria-current="page">Guides</a></li>
+        <li><a href="../support.html">Support</a></li>
+        <li><a href="../security.html">Security</a></li>
+        <li><a href="../privacy.html">Privacy</a></li>
+        <li><a href="../terms.html">Terms</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="doc">
+<h1 id="top">How to remove deactivated users from Confluence page watchers</h1>
+    <p class="lead">Departed colleagues often stay on watcher lists. Here is how to clean them up across many pages.</p>
+
+    <h2 id="problem">The problem</h2>
+    <p>Watcher lists are managed page by page. When accounts are deactivated or closed, they can remain on the pages they watched, and cleaning them up means opening each page.</p>
+
+    <h2 id="steps">Steps with Tidyspace</h2>
+    <p>You need to be a Confluence administrator and have <a href="../docs.html#install">Tidyspace installed</a>.</p>
+    <ol>
+      <li>Open <strong>Confluence administration</strong>, then <strong>Apps</strong>, then <strong>Tidyspace</strong>.</li>
+      <li>Choose <strong>Watchers</strong>, then the option to <strong>remove watchers who are deactivated or closed accounts</strong>.</li>
+      <li>Select the content (spaces, pages, a label or a CQL query) and click <strong>Prepare the preview</strong>.</li>
+      <li>Check the preview, then <strong>Run</strong>.</li>
+    </ol>
+    <div class="note">Confluence only lets an app change another person’s watch status if the app has administrator rights. If watcher changes fail with “Permission denied”, give the app <strong>Tidyspace</strong> the space administration permission in the space settings (or the site-wide equivalent), then re-run the job.</div>
+    <p>You can also add or remove specific users (up to 10 per job). Details in <a href="../docs.html#watchers">documentation, Watchers</a>.</p>
+
+    <h2 id="verify">Verify</h2>
+    <p>The panel shows what changed and what failed; the <strong>CSV export</strong> keeps the full record. Pages you cannot access are excluded and only counted.</p>
+    <p class="top"><a href="index.html">All guides</a> · <a href="#top">Back to top</a></p>
+  </main>
+  <footer class="site">
+    <div class="in">
+      <p>© 2026 Corentin Regnier. Tidyspace is an app for Confluence Cloud. Confluence and Atlassian are trademarks of Atlassian; Tidyspace is not made or endorsed by Atlassian.</p>
+      <ul>
+        <li><a href="../index.html">Product</a></li>
+        <li><a href="../docs.html">Documentation</a></li>
+        <li><a href="index.html">Guides</a></li>
+        <li><a href="../support.html">Support</a></li>
+        <li><a href="../security.html">Security</a></li>
+        <li><a href="../privacy.html">Privacy</a></li>
+        <li><a href="../terms.html">Terms</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

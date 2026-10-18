@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>Change page restrictions in bulk in Confluence · Tidyspace</title>
+  <meta name="description" content="How a Confluence Cloud administrator can grant or remove view and edit access on many pages at once, with a before and after preview and safeguards against locking people out.">
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site">
+    <div class="in">
+      <a class="brand" href="../index.html"><img src="../assets/img/logo.svg" alt="" width="32" height="32">Tidyspace</a>
+      <nav class="site" aria-label="Main">
+        <ul>
+        <li><a href="../index.html">Product</a></li>
+        <li><a href="../docs.html">Documentation</a></li>
+        <li><a href="index.html" aria-current="page">Guides</a></li>
+        <li><a href="../support.html">Support</a></li>
+        <li><a href="../security.html">Security</a></li>
+        <li><a href="../privacy.html">Privacy</a></li>
+        <li><a href="../terms.html">Terms</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="doc">
+<h1 id="top">How to grant or remove access on many Confluence pages at once</h1>
+    <p class="lead">A person joins a team, or leaves one. Here is how to update page restrictions across many pages in one previewed job.</p>
+
+    <h2 id="problem">The problem</h2>
+    <p>Page restrictions are set page by page in the Confluence interface. When a team changes, an administrator can face hundreds of pages. The risk is also real: a wrong change can make a page inaccessible to the people who need it.</p>
+
+    <h2 id="steps">Steps with Tidyspace</h2>
+    <p>You need to be a Confluence administrator and have <a href="../docs.html#install">Tidyspace installed</a>.</p>
+    <ol>
+      <li>Open <strong>Confluence administration</strong>, then <strong>Apps</strong>, then <strong>Tidyspace</strong>.</li>
+      <li>Choose <strong>Restrictions</strong>, then <strong>Grant access</strong> (<strong>Can view</strong> or <strong>Can edit</strong>) or <strong>Remove access</strong>.</li>
+      <li>Pick up to 10 users and groups.</li>
+      <li>Select the content: spaces, pages and folders in the tree, a label, a modification date, or a CQL query.</li>
+      <li>Click <strong>Prepare the preview</strong>.</li>
+    </ol>
+
+    <h2 id="preview">The preview shows before and after</h2>
+    <p>For the first items, the preview shows the access before and after the job and the effect on each page. Nothing is written until you click <strong>Run</strong>.</p>
+    <figure class="shot">
+      <img src="../assets/img/screens/restrictions.png" width="2296" height="1816" alt="Restrictions preview: for each page, the access before and after, the effect, and an item left unchanged because the removal would have left only the app.">
+    </figure>
+
+    <h2 id="safeguards">Two safeguards</h2>
+    <ul>
+      <li><strong>No lock-out.</strong> A removal that would leave only the app able to view or edit a page is refused and reported as “Left unchanged”.</li>
+      <li><strong>No widening of your rights.</strong> Tidyspace only touches pages you can see and edit yourself, so it cannot be used to give yourself access to a page that excludes you.</li>
+    </ul>
+    <p>The app itself is added with “Can edit” on every restriction it sets, because Confluence refuses a restriction that excludes the app setting it. More in <a href="../docs.html#restrictions">documentation, Restrictions</a>.</p>
+
+    <h2 id="after">After the job</h2>
+    <p>The panel lists failed and skipped pages, and the <strong>CSV export</strong> contains all of them, which is useful as a record of what changed. A job can be resumed if it was interrupted, and an old job can be re-run as a new preview.</p>
+    <p class="top"><a href="index.html">All guides</a> · <a href="#top">Back to top</a></p>
+  </main>
+  <footer class="site">
+    <div class="in">
+      <p>© 2026 Corentin Regnier. Tidyspace is an app for Confluence Cloud. Confluence and Atlassian are trademarks of Atlassian; Tidyspace is not made or endorsed by Atlassian.</p>
+      <ul>
+        <li><a href="../index.html">Product</a></li>
+        <li><a href="../docs.html">Documentation</a></li>
+        <li><a href="index.html">Guides</a></li>
+        <li><a href="../support.html">Support</a></li>
+        <li><a href="../security.html">Security</a></li>
+        <li><a href="../privacy.html">Privacy</a></li>
+        <li><a href="../terms.html">Terms</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
